@@ -1,4 +1,5 @@
 import Aux from '../../hoc/Auxiliary';
+import './Layout.css';
 
 function Layout(props) {
   return (
@@ -6,7 +7,7 @@ function Layout(props) {
       <div>
         Toolbar, Sidebar, Backdrop
       </div>
-      <main>
+      <main className={"Content"}>
         {props.children}
       </main>
     </Aux>
