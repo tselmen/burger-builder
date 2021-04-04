@@ -1,23 +1,20 @@
 import './Ingredient.css';
 import * as PropTypes from "prop-types";
-import {Component} from "react/cjs/react.production.min";
 
-class Ingredient extends Component {
-  render() {
+function Ingredient(props) {
+  let ingredient
 
-    let ingredient
-
-    switch (this.props.type) {
-      case 'bread-bottom':
-        ingredient = <div className={"BreadBottom"}/>;
-        break;
-      case 'bread-top':
-        ingredient = (
-          <div className={"BreadTop"}>
-            <div className={"Seeds1"}/>
-            <div className={"Seeds2"}/>
-          </div>
-        );
+  switch (props.type) {
+    case 'bread-bottom':
+      ingredient = <div className={"BreadBottom"}/>;
+      break;
+    case 'bread-top':
+      ingredient = (
+        <div className={"BreadTop"}>
+          <div className={"Seeds1"}/>
+          <div className={"Seeds2"}/>
+        </div>
+      );
         break;
       case 'meat':
         ingredient = <div className={"Meat"}/>
@@ -35,7 +32,6 @@ class Ingredient extends Component {
         ingredient = null;
     }
     return ingredient;
-  }
 }
 
 Ingredient.propTypes = {

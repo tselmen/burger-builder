@@ -1,24 +1,27 @@
 import Ingredient from "./Ingredient/Ingredient";
-import {Component} from "react/cjs/react.production.min";
 import './Burger.css'
 
-class Burger extends Component {
-  transformedIngredients = Object.keys(this.props.ingredients)
+function Burger(props) {
+  let transformedIngredients = Object.keys(props.ingredients)
     .map(keys => {
-      return [...Array(this.props.ingredients[keys])].map((_, i) => {
+      return [...Array(props.ingredients[keys])].map((_, i) => {
         return <Ingredient type={keys} key={keys + i}/>
       })
     })
+    .reduce((arr, el) => {
+      return arr.concat(el)
+    }, [])
 
-  render() {
-    return (
-      <div className={"Burger"}>
-        <Ingredient type={"bread-top"}/>
-        {this.transformedIngredients}
-        <Ingredient type={"bread-bottom"}/>
-      </div>
-    );
+  if (transformedIngredients.length === 0) {
+    transformedIngredients = <p>Please start adding ingredients</p>
   }
+  return (
+    <div className={"Burger"}>
+      <Ingredient type={"bread-top"}/>
+      {transformedIngredients}
+      <Ingredient type={"bread-bottom"}/>
+    </div>
+  );
 }
 
 export default Burger;
